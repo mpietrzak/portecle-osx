@@ -1,0 +1,31 @@
+<project default="bundle">
+    <property environment="env"/>
+    <property name="portecle.version">1.10</property>
+    <taskdef name="bundleapp" classname="com.oracle.appbundler.AppBundlerTask">
+        <classpath>
+            <pathelement location="lib/appbundler-1.0ea.jar"/>
+        </classpath>
+    </taskdef>
+    <target name="bundle">
+        <bundleapp
+                executablename="Portecle"
+                outputdirectory="."
+                name="Portecle"
+                displayname="Portecle"
+                identifier="cx.hell.portecle"
+                shortversion="${portecle.version}"
+                version="${portecle.version}"
+                applicationCategory="public.app-category.developer-tools"
+                mainclassname="net.sf.portecle.FPortecle"
+                jvmrequired="1.8"
+                icon="portecle.icns">
+            <classpath file="*.jar"/>
+            <option value="-Dapple.laf.useScreenMenuBar=true"/>
+            <option value="-Dcom.apple.macos.useScreenMenuBar=true"/>
+            <option value="-Xms16M" name="Xms"/>
+            <option value="-Xmx1G" name="Xmx"/>
+            <option value="-Dcom.apple.smallTabs=true"/>
+            <option value="-Xdock:name=Portecle"/>
+        </bundleapp>
+    </target>
+</project>
